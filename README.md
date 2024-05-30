@@ -1,7 +1,6 @@
-# aiogram-bot-template
+# Aiogram Bot Template
 
 A template for creating a telegram bot using aiogram
-
 
 ## Contributing
 
@@ -19,4 +18,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Create an example filter
 - [ ] Create an example state
 - [ ] Building an ORM via Tortoise ORM
-- [ ] Logging  with Loguru
+- [x] Logging  with Loguru

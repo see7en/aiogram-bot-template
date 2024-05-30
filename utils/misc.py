@@ -1,9 +1,9 @@
-import logging
+from loguru import logger
 
 
 async def on_startup() -> None:
-    logging.debug("Bot is starting...")
+    logger.debug("Bot is starting...")
 
 
 async def on_shutdown():
-    logging.debug("Bot is shutting down...")
+    logger.debug("Bot is shutting down...")
