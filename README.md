@@ -15,3 +15,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [x] Create a folder structure
 - [x] Create a basic bot
+- [ ] Create example keyboards
+- [ ] Create an example filter
+- [ ] Create an example state
+- [ ] Building an ORM via Tortoise ORM
+- [ ] Logging  with Loguru
