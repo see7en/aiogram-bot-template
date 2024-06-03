@@ -1,0 +1,60 @@
+name: CodeQL
+
+on:
+  push:
+    branches-ignore:
+      - dependabot/**
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 14 * * 6'
+
+jobs:
+  diagnostics:
+    name: Run diagnostics
+    runs-on: ubuntu-latest
+    steps:
+      - id: harden-runner
+        name: Harden the runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+      - id: github-status
+        name: Check GitHub status
+        uses: crazy-max/ghaction-github-status@v3
+      - id: dump-context
+        name: Dump context
+        uses: crazy-max/ghaction-dump-context@v2
+  analyze:
+    name: Analyze
+    needs:
+      - diagnostics
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language:
+          - python
+    steps:
+      - id: harden-runner
+        name: Harden the runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+          
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
