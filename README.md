@@ -17,5 +17,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Create example keyboards
 - [ ] Create an example filter
 - [ ] Create an example state
-- [ ] Building an ORM via Tortoise ORM
+- [x] Building an ORM via Tortoise ORM
 - [x] Logging  with Loguru

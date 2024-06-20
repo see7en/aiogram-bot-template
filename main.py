@@ -6,14 +6,14 @@ from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 
 from handlers import setup_handlers
-from utils.config import Config
+from utils.config import Settings
 from utils.logging import configure_logger
 from utils.misc import on_startup, on_shutdown
 
 
 async def main() -> None:
-    config = Config()
-    bot = Bot(token=config.bot_token.get_secret_value(), default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    settings = Settings()
+    bot = Bot(token=settings.bot_token.get_secret_value(), default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     storage = MemoryStorage()
 
     dp = Dispatcher(storage=storage)
